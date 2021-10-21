@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const List = require('./list.model');
 
 const itemSchema = new mongoose.Schema({
     name: {
@@ -21,9 +22,8 @@ const itemSchema = new mongoose.Schema({
     timestamps: { createdAt: true, updatedAt: false }
 })
 
-itemSchema.pre('remove', function(next) {
-    // Find all items in lists and remove them from there
-    console.log("removed")
+itemSchema.pre('remove', async function(next) {
+    const lists = await List.updateMany({"items": this._id}, {$pull: { items: this._id }});
     next();
 })
 
