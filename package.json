@@ -1,0 +1,27 @@
+{
+  "name": "shopappbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gorann12/shopBackend.git"
+  },
+  "author": "Goran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gorann12/shopBackend/issues"
+  },
+  "homepage": "https://github.com/Gorann12/shopBackend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
