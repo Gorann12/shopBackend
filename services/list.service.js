@@ -22,7 +22,7 @@ const getAll = async () => {
     }
 }
 
-const getOne = async (id) => {
+const getById = async (id) => {
     try {
         const foundList = await List.findById(id).populate("items shop");
 
@@ -69,7 +69,7 @@ const deleteOne = async (id) => {
 module.exports = {
     create,
     getAll,
-    getOne,
+    getById,
     updateOne,
     deleteOne
 }

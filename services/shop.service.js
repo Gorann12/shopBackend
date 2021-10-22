@@ -12,7 +12,7 @@ const create = async (shop) => {
     }  
 }
 
-const getOne = async (id) => {
+const getById = async (id) => {
     try {
         const foundShop = await Shop.findById(id, '-__v');
 
@@ -38,6 +38,6 @@ const getAll = async () => {
 
 module.exports = {
     create,
-    getOne,
+    getById,
     getAll
 }

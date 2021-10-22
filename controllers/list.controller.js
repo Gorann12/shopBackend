@@ -12,8 +12,8 @@ const getAll = async (req, res) => {
     return res.status(response.statusCode).json(response.body);
 }
 
-const getOne = async (req, res) => {
-    const response = await listService.getOne(req.params.id);
+const getById = async (req, res) => {
+    const response = await listService.getById(req.params.id);
 
     return res.status(response.statusCode).json(response.body);
 }
@@ -33,7 +33,7 @@ const deleteOne = async (req, res) => {
 module.exports = {
     create,
     getAll,
-    getOne,
+    getById,
     updateOne,
     deleteOne
 }

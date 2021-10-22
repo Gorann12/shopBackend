@@ -4,6 +4,6 @@ const shopController = require('../controllers/shop.controller');
 
 router.post('/', shopController.create);
 router.get('/', shopController.getAll);
-router.get('/:id', shopController.getOne);
+router.get('/:id', shopController.getById);
 
 module.exports = router;

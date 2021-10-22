@@ -6,8 +6,8 @@ const create = async (req, res) => {
     return res.status(response.statusCode).json(response.body);
 }
 
-const getOne = async (req, res) => {
-    const response = await shopService.getOne(req.params.id);
+const getById = async (req, res) => {
+    const response = await shopService.getById(req.params.id);
 
     return res.status(response.statusCode).json(response.body);
 }
@@ -20,6 +20,6 @@ const getAll = async (req, res) => {
 
 module.exports = {
     create,
-    getOne,
+    getById,
     getAll
 }
