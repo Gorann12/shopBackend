@@ -1,26 +1,41 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const Shop = require("./shop.model");
 
-const listSchema = new mongoose.Schema({
+const listSchema = new mongoose.Schema(
+  {
     name: {
-        type: String,
-        maxLength: 35,
-        required: true,
-        unique: true
+      type: String,
+      maxLength: 35,
+      required: true,
+      unique: true,
     },
     items: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Item'
-        }
+      {
+        type: mongoose.Types.ObjectId,
+        ref: "Item",
+      },
     ],
     shop: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Shop',
-        required: true
-    }
-}, {
-    timestamps: true
-})
+      type: mongoose.Types.ObjectId,
+      ref: "Shop",
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const List = mongoose.model('List', listSchema);
+listSchema.pre("save", async function (next) {
+  const shopId = this.shop;
+  const shop = await Shop.findById(shopId);
+
+  if (!shop) {
+    throw new Error("Shop not found");
+  }
+
+  next();
+});
+
+const List = mongoose.model("List", listSchema);
 module.exports = List;
