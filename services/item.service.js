@@ -1,5 +1,4 @@
 const Item = require("../models/item.model");
-const Category = require("../models/category.model");
 const utilsService = require("../utils/utils.service");
 
 const create = async (item) => {
@@ -9,7 +8,7 @@ const create = async (item) => {
 
     return utilsService.generateResponse(201, newItem);
   } catch (err) {
-    return utilsService.generateResponse(400, err.message);
+    return utilsService.generateResponse(400, { message: err.message });
   }
 };
 
@@ -19,7 +18,7 @@ const getAll = async () => {
 
     return utilsService.generateResponse(200, items);
   } catch (err) {
-    return utilsService.generateResponse(400, err.message);
+    return utilsService.generateResponse(400, { message: err.message });
   }
 };
 
@@ -33,7 +32,7 @@ const getById = async (id) => {
 
     return utilsService.generateResponse(200, foundItem);
   } catch (err) {
-    return utilsService.generateResponse(404, err.message);
+    return utilsService.generateResponse(404, { message: err.message });
   }
 };
 
@@ -52,7 +51,7 @@ const updateOne = async (id, body) => {
     await item.save();
     return utilsService.generateResponse(200, item);
   } catch (err) {
-    return utilsService.generateResponse(400, err.message);
+    return utilsService.generateResponse(400, { message: err.message });
   }
 };
 
@@ -67,7 +66,7 @@ const deleteOne = async (id) => {
     await item.remove();
     return utilsService.generateResponse(200, {});
   } catch (err) {
-    return utilsService.generateResponse(400, err.message);
+    return utilsService.generateResponse(400, { message: err.message });
   }
 };
 
