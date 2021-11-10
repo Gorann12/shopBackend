@@ -38,10 +38,7 @@ itemSchema.pre("save", async function (next) {
 });
 
 itemSchema.pre("remove", async function (next) {
-  const lists = await List.updateMany(
-    { items: this._id },
-    { $pull: { items: this._id } }
-  );
+  await List.updateMany({ items: this._id }, { $pull: { items: this._id } });
   next();
 });
 

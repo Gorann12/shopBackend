@@ -3,7 +3,7 @@ const utilsService = require("../utils/utils.service");
 
 const create = async (item) => {
   try {
-    const newItem = await new Item(item);
+    const newItem = new Item(item);
     await newItem.save();
 
     return utilsService.generateResponse(201, newItem);
