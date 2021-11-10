@@ -1,14 +1,14 @@
-services: 
-  api: 
-    image: gorandockerid/shopapi
-    build: .
+services:
+  api:
+    build:
+      context: ./
+    image: shopapi:newest
     command: "npm start"
-    ports: 
+    ports:
       - "3000:3000"
-    depends_on: 
+    depends_on:
       - "mongo"
   mongo:
     image: mongo
     ports:
-      - '27017:27017'
-    
+      - "27017:27017"
